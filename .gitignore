@@ -12,7 +12,7 @@
 .mtj.tmp/
 
 # Package Files #
-*.jar
+# *.jar
 *.war
 *.nar
 *.ear
@@ -24,7 +24,7 @@
 hs_err_pid*
 
 ### Maven template
-target/
+# target/
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
@@ -169,7 +169,7 @@ Temporary Items
 *.iml
 *.ipr
 *.iws
-*.jar
+# *.jar
 *.sw?
 *~
 .#*
@@ -202,7 +202,7 @@ lib/
 manifest.yml
 out
 overridedb.*
-target
+# target
 .flattened-pom.xml
 secrets.yml
 .gradletasknamecache
