@@ -1,10 +1,10 @@
 package pl.michaldurlak.shortURL.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 import pl.michaldurlak.shortURL.model.LinkModel;
 import pl.michaldurlak.shortURL.service.LinkService;
+
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
@@ -14,6 +14,16 @@ public class LinkController {
 
     @GetMapping("/test")
     public void test() throws IOException, ExecutionException, InterruptedException {
+        LinkService.getRecords();
+    }
+
+    @ResponseBody
+    @RequestMapping(value="/{shortLink}", method = RequestMethod.GET)
+    public RedirectView redirectToOriginalSite(@PathVariable("shortLink") String shortLink) throws ExecutionException, InterruptedException {
+        RedirectView redirectView = new RedirectView();
+        System.out.println(LinkService.getOriginalSite(shortLink));
+        redirectView.setUrl("https://" + LinkService.getOriginalSite(shortLink));
+        return redirectView;
 
     }
 
@@ -27,5 +37,5 @@ public class LinkController {
     }
 
 
-    // http://localhost:8080/createShort?originalLink=https://o2.pl&dateEnd=17072022&timeEnd=111111
+    // http://localhost:8080/createShort?originalLink=twitch.tv&dateEnd=17072022&timeEnd=111111
 }
