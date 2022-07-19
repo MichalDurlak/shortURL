@@ -19,7 +19,7 @@ public class LinkFirebase {
     public static void getConnectionToFirebase() throws IOException {
 
         FileInputStream serviceAccount =
-                new FileInputStream("src/main/resources/shorturlbymd-firebase-adminsdk-lvfyv-e7f1b38ca5.json");
+                new FileInputStream("src/main/resources/firebase_credentials.json");
 
         FirebaseOptions options = new FirebaseOptions.Builder()
                 .setCredentials(GoogleCredentials.fromStream(serviceAccount))
