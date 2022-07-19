@@ -39,7 +39,7 @@ public class LinkFirebase {
         docData.put("shortLink", shortLink);
         docData.put("timeEnd", timeEnd);
         ApiFuture<WriteResult> future = db.collection("links").document(shortLink).set(docData);
-        System.out.println(future.get().getUpdateTime());
+        System.out.println("Update time:" + future.get().getUpdateTime() + " Original Link:" + originalLink + " Short Link:" + shortLink + " Link date&time:" + timeEnd + " " + dayEnd);
 
 
     }
@@ -75,7 +75,6 @@ public class LinkFirebase {
                 dbFirestore.collection("links").document(shortURL);
         ApiFuture<DocumentSnapshot> future = documentReference.get();
         DocumentSnapshot document = future.get();
-
         if(document.exists()) {
             return (String) document.get("originalLink");
 

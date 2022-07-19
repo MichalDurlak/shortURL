@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pl" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.98.0">
+    <title>Skróć swój link tutaj</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/sign-in/">
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <!-- Custom styles for this template -->
+    <link href="css/index_style.css" rel="stylesheet">
+
+
+</head>
+<body class="text-center">
+
+<main class="form-signin w-100 m-auto">
+
+        <!--    <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">-->
+        <h1 class="h3 mb-3 fw-normal">Twój skrócony link to: <span th:utext="${linkModel.shortLink}"> </span> </h1>
+        <br/>
+<!--        <h2 class="h3 mb-3 fw-normal">Pełny adres to: <a href=@'https://skroc.michaldurlak.pl/' +"${linkModel.shortLink}"> https://skroc.michaldurlak.pl/ <span th:utext="${linkModel.shortLink}"> </span> </a></h2>-->
+        <h2 class="h3 mb-3 fw-normal"><a th:href="@{|http://localhost:8080/${linkModel.shortLink}|}"> https://skroc.michaldurlak.pl/ <span th:utext="${linkModel.shortLink}"> </span> </a></h2>
+<!--        <div class="form-floating">-->
+<!--            <input type="text" class="form-control" id="floatingInput" placeholder="url" name="urlLink">-->
+<!--            <label for="floatingInput">Adres strony Internetowej</label>-->
+<!--        </div>-->
+
+
+        <a href="/" class="btn btn-secondary" role="button">Skróć coś innego!</a>
+</main>
+
+
+
+</body>
+</html>
