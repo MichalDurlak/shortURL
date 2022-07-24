@@ -9,6 +9,7 @@ import com.google.firebase.cloud.FirestoreClient;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -17,12 +18,17 @@ import java.util.concurrent.ExecutionException;
 public class LinkFirebase {
 
     public static void getConnectionToFirebase() throws IOException {
+        InputStream resourceAsStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("firebase_credentials.json");
+//        FileInputStream serviceAccount = new FileInputStream("src/main/resources/firebase_credentials.json");
+//        FileInputStream serviceAccount = new FileInputStream(resourceAsStream);
 
-        FileInputStream serviceAccount =
-                new FileInputStream("src/main/resources/firebase_credentials.json");
+//        FirebaseOptions options = new FirebaseOptions.Builder()
+//                .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+//                .build();
+
 
         FirebaseOptions options = new FirebaseOptions.Builder()
-                .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+                .setCredentials(GoogleCredentials.fromStream(resourceAsStream))
                 .build();
 
         FirebaseApp.initializeApp(options);

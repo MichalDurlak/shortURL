@@ -207,5 +207,6 @@ overridedb.*
 secrets.yml
 .gradletasknamecache
 .sts4-cache
-src/main/resources/shorturlbymd-firebase-adminsdk-lvfyv-e7f1b38ca5.json
+src/main/resources/firebase_credentials.json
 target/classes/shorturlbymd-firebase-adminsdk-lvfyv-e7f1b38ca5.json
+target/classes/firebase_credentials.json
