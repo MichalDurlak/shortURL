@@ -17,11 +17,10 @@ public class LinkModel {
 
 
 
-    public LinkModel(String originalLink, int dateEnd, int timeEnd) {
+    public LinkModel(String originalLink, String dateEnd, String timeEnd) {
         this.originalLink = originalLink;
-        this.dateEnd = dateEnd;
-        this.timeEnd = timeEnd;
-
+        this.dateEnd = Integer.parseInt(dateEnd.replaceAll("-",""));
+        this.timeEnd = Integer.parseInt(timeEnd.replaceAll(":",""));
         this.shortLink = generateShortLink();
     }
 

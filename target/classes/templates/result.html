@@ -27,7 +27,7 @@
         <h1 class="h3 mb-3 fw-normal">Twój skrócony link to: <span th:utext="${linkModel.shortLink}"> </span> </h1>
         <br/>
 <!--        <h2 class="h3 mb-3 fw-normal">Pełny adres to: <a href=@'https://skroc.michaldurlak.pl/' +"${linkModel.shortLink}"> https://skroc.michaldurlak.pl/ <span th:utext="${linkModel.shortLink}"> </span> </a></h2>-->
-        <h2 class="h3 mb-3 fw-normal"><a th:href="@{|http://localhost:8080/${linkModel.shortLink}|}"> https://skroc.michaldurlak.pl/ <span th:utext="${linkModel.shortLink}"> </span> </a></h2>
+        <h2 class="h3 mb-3 fw-normal"><a th:href="@{|https://skroc.michaldurlak.pl/${linkModel.shortLink}|}"> https://skroc.michaldurlak.pl/ <span th:utext="${linkModel.shortLink}"> </span> </a></h2>
 <!--        <div class="form-floating">-->
 <!--            <input type="text" class="form-control" id="floatingInput" placeholder="url" name="urlLink">-->
 <!--            <label for="floatingInput">Adres strony Internetowej</label>-->

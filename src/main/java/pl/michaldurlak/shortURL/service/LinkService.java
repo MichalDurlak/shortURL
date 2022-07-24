@@ -12,7 +12,6 @@ public class LinkService {
 
     public static void createShortLink(LinkModel linkModel) throws IOException, ExecutionException, InterruptedException {
         LinkFirebase.createRecordInDatabaseFirebase(linkModel.getDateEnd(), linkModel.getOriginalLink(), linkModel.getShortLink(), linkModel.getTimeEnd());
-
     }
 
     public static void getRecords() throws ExecutionException, InterruptedException {
