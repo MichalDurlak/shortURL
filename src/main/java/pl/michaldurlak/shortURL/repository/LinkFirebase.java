@@ -6,6 +6,7 @@ import com.google.cloud.firestore.*;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.cloud.FirestoreClient;
+import org.springframework.stereotype.Repository;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -14,7 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-
+@Repository
 public class LinkFirebase {
 
     public static void getConnectionToFirebase() throws IOException {
@@ -68,6 +69,7 @@ public class LinkFirebase {
         ApiFuture<QuerySnapshot> future = db.collection("links").get();
 // future.get() blocks on response
         List<QueryDocumentSnapshot> documents = future.get().getDocuments();
+
         for (QueryDocumentSnapshot document : documents) {
             System.out.println(document.getId() + " => " + document.get("dayEnd") +", " + document.get("originalLink") + ", " + document.get("timeEnd"));
         }
