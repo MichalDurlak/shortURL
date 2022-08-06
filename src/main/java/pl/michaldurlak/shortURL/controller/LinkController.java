@@ -41,10 +41,21 @@ public class LinkController {
         //Create view
         RedirectView redirectView = new RedirectView();
         //Set Url to the original
-        redirectView.setUrl("https://" + LinkService.getOriginalSite(shortLink));
+        String originalSite = LinkService.getOriginalSite(shortLink);
+        //If shortlink is invalid
+        if(originalSite.equals("BrakLinku")){
+            redirectView.setUrl("https://skroc.michaldurlak.pl/notfound");
+        } else {
+            redirectView.setUrl("https://" + originalSite);
+        }
+
         //Redirect
         return redirectView;
+    }
 
+    @GetMapping("/notfound")
+    public String getNotFound(){
+        return "unknown";
     }
 
 

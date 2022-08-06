@@ -88,7 +88,7 @@ public class LinkFirebase {
 
         }else {
             // redirect to 404 not site not found
-            return "brak linku";
+            return "BrakLinku";
         }
 
     }

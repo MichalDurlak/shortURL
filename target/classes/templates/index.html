@@ -27,7 +27,7 @@
     <form method="post" th:action="@{/}" th:object="${URLRequest}">
 
         <!--    <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">-->
-        <h1 class="h3 mb-3 fw-normal">Skróc link do strony Internetowej:</h1>
+        <h1 class="h3 mb-3 fw-normal">Skróć link do strony Internetowej:</h1>
 
 <!--        LINK-->
         <div class="form-floating">
@@ -58,10 +58,7 @@ var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
 var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 var yyyy = today.getFullYear();
-
 today = yyyy + '-' + mm + '-' + dd;
-
-
 document.getElementById("dateID").value = today;
 
 </script>
