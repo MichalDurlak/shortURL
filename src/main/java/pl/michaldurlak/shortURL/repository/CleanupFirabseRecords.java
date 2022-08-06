@@ -1,34 +1,37 @@
 package pl.michaldurlak.shortURL.repository;
 
-import com.google.api.client.util.DateTime;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.Firestore;
 import com.google.cloud.firestore.QueryDocumentSnapshot;
 import com.google.cloud.firestore.QuerySnapshot;
 import com.google.firebase.cloud.FirestoreClient;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Repository;
-
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
+
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 @Repository
+@Slf4j
 public class CleanupFirabseRecords {
 
-
-    public static String cleanUpService() throws ExecutionException, InterruptedException {
-
+    @Scheduled(cron = "1 * * * * *")
+    public static void runCleaningService() throws ExecutionException, InterruptedException {
         // called function to get all expired links
         ArrayList<String> filterListOfRecords = getFilterListOfRecords();
 
-        //delete all expired short links
-        return deleteExpiredRecords(filterListOfRecords);
+        if(filterListOfRecords.size() != 0){
+            //logged to console what will be deleted
+            log.info("Czyszczenie rekordu --> " + filterListOfRecords);
+            //delete all expired short links
+            deleteExpiredRecords(filterListOfRecords);
+        }
     }
+
 
     private static ArrayList<String> getFilterListOfRecords() throws ExecutionException, InterruptedException {
         //set date and time to check if record expired or not
@@ -51,7 +54,6 @@ public class CleanupFirabseRecords {
                 shortAddresses.add(document.getId());
             }
         }
-
         return shortAddresses;
     }
 
@@ -65,7 +67,7 @@ public class CleanupFirabseRecords {
             db.collection("links").document(shortLink)
                     .delete();
         }
-
         return "CLEANED";
     }
+
 }
