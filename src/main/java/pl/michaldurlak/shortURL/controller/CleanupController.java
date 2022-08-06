@@ -13,6 +13,7 @@ public class CleanupController {
     @GetMapping("/cleanup")
     public String cleanUpRecords() throws ExecutionException, InterruptedException {
 
-        return CleanupFirabseRecords.cleanUpService();
+        CleanupFirabseRecords.runCleaningService();
+        return "Manually cleaned records";
     }
 }
